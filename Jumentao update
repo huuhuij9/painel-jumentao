@@ -241,4 +241,3 @@ TBtn.MouseButton1Click:Connect(function() Main.Visible = not Main.Visible end)
 
 task.spawn(AutoDetectAllies)
 Notify("HRZ", "PAINEL CARREGADO COM SUCESSO!", 4)
-# painel-jumentao
