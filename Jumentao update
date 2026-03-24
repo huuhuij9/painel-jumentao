@@ -1,243 +1,28 @@
---[[
-    PAINEL JUMENTÃO V4.5 - ESP RAINBOW + TÍTULO
-    - Adicionado título visível no painel principal.
-    - ESP dos inimigos com efeito rainbow automático.
-    - Aliados mantêm cor azul fixa.
-]]
-
-local TweenService = game:GetService("TweenService")
-local UserInputService = game:GetService("UserInputService")
-local RunService = game:GetService("RunService")
-local Players = game:GetService("Players")
-local LocalPlayer = Players.LocalPlayer
-local Camera = workspace.CurrentCamera
-
--- CONFIGURAÇÕES GLOBAIS
-getgenv().HBE_Enabled = true
-getgenv().ESP_Enabled = false
-getgenv().WallCheck = true
-getgenv().TeamCheck = true 
-getgenv().HitboxSize = 10
-getgenv().ProximityRange = 55
-getgenv().MaxAllies = 4
-
-local Allies = {}
-local PinkColor = Color3.fromRGB(0, 255, 0)
-
--- ===========================
--- FUNÇÃO RAINBOW
--- ===========================
-local RAINBOW_SPEED = 0.9
-
-local function GetRainbowColor()
-    local hue = (tick() * RAINBOW_SPEED) % 1
-    return Color3.fromHSV(hue, 1, 1)
+-- PROTECTED BY X-GEN OBFUSCATOR v1.0\n-- UNAUTHORIZED EDITING IS PROHIBITED\n
+local bIwuLSvonk = "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"
+local function PyyqERmAQf(data)
+    local b = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"
+    data = string.gsub(data, '[^'..b..'=]', '')
+    return (data:gsub('.', function(x)
+        if (x == '=') then return '' end
+        local r,f='',(b:find(x)-1)
+        for i=6,1,-1 do r=r..(f%2^i-f%2^(i-1)>0 and '1' or '0') end
+        return r;
+    end):gsub('%d%d%d%d%d%d%d%d', function(x)
+        local r=0
+        for i=1,8 do r=r+(x:sub(i,i)=='1' and 2^(8-i) or 0) end
+        return string.char(r)
+    end))
 end
 
--- NOTIFICAÇÃO
-local function Notify(title, text, duration)
-    local sg = Instance.new("ScreenGui", LocalPlayer.PlayerGui)
-    sg.Name = "Jumentao_Notify"
-    local f = Instance.new("Frame", sg)
-    f.Size = UDim2.new(0, 220, 0, 70)
-    f.Position = UDim2.new(1, 10, 0.8, 0)
-    f.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
-    local UICorner = Instance.new("UICorner", f)
-    UICorner.CornerRadius = UDim.new(0, 8)
-    local UIStroke = Instance.new("UIStroke", f)
-    UIStroke.Color = PinkColor
-    UIStroke.Thickness = 2
-    
-    local TitleLabel = Instance.new("TextLabel", f)
-    TitleLabel.BackgroundTransparency = 1
-    TitleLabel.Position = UDim2.new(0, 10, 0, 5)
-    TitleLabel.Size = UDim2.new(1, -20, 0, 20)
-    TitleLabel.Font = Enum.Font.GothamBold
-    TitleLabel.Text = title
-    TitleLabel.TextColor3 = PinkColor
-    TitleLabel.TextSize = 14
-    TitleLabel.TextXAlignment = Enum.TextXAlignment.Left
-    
-    local TextLabel = Instance.new("TextLabel", f)
-    TextLabel.BackgroundTransparency = 1
-    TextLabel.Position = UDim2.new(0, 10, 0, 25)
-    TextLabel.Size = UDim2.new(1, -20, 0, 40)
-    TextLabel.Font = Enum.Font.Gotham
-    TextLabel.Text = text
-    TextLabel.TextColor3 = Color3.new(1, 1, 1)
-    TextLabel.TextSize = 12
-    TextLabel.TextWrapped = true
-    TextLabel.TextXAlignment = Enum.TextXAlignment.Left
-    
-    TweenService:Create(f, TweenInfo.new(0.5, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {Position = UDim2.new(1, -230, 0.8, 0)}):Play()
-    task.delay(duration or 3, function()
-        local exit = TweenService:Create(f, TweenInfo.new(0.5, Enum.EasingStyle.Back, Enum.EasingDirection.In), {Position = UDim2.new(1, 10, 0.8, 0)})
-        exit:Play()
-        exit.Completed:Connect(function() sg:Destroy() end)
-    end)
-end
+-- Security Check (Junk)
+if not game then return end
 
--- ===========================
--- LÓGICA DE TEAMCHECK
--- ===========================
-local function AutoDetectAllies()
-    local char = LocalPlayer.Character
-    if not char or not char:FindFirstChild("HumanoidRootPart") then return end
-    local myPos = char.HumanoidRootPart.Position
-    local potentialAllies = {}
-    for _, p in pairs(Players:GetPlayers()) do
-        if p ~= LocalPlayer and p.Character and p.Character:FindFirstChild("HumanoidRootPart") then
-            local dist = (p.Character.HumanoidRootPart.Position - myPos).Magnitude
-            if dist <= getgenv().ProximityRange then
-                table.insert(potentialAllies, {player = p, distance = dist})
-            end
-        end
-    end
-    table.sort(potentialAllies, function(a, b) return a.distance < b.distance end)
-    local newAllies = {}
-    for i = 1, math.min(#potentialAllies, getgenv().MaxAllies) do
-        local p = potentialAllies[i].player
-        newAllies[p.UserId] = true
-    end
-    Allies = newAllies
-    Notify("TeamCheck", "Aliados detectados!", 2)
-end
-
-LocalPlayer.CharacterAdded:Connect(function()
-    task.wait(1.5)
-    AutoDetectAllies()
+local decoded = PyyqERmAQf(bIwuLSvonk)
+local success, result = pcall(function()
+    return loadstring(decoded)()
 end)
 
-local function IsEnemy(otherPlayer)
-    if not getgenv().TeamCheck then return true end
-    return not Allies[otherPlayer.UserId]
+if not success then
+    warn("Failed to load protected script.")
 end
-
--- ===========================
--- WALLCHECK
--- ===========================
-local function IsVisible(targetPart)
-    if not getgenv().WallCheck then return true end
-    local origin = Camera.CFrame.Position
-    local direction = (targetPart.Position - origin)
-    local raycastParams = RaycastParams.new()
-    local ignoreList = {}
-    for _, p in pairs(Players:GetPlayers()) do
-        if p.Character then table.insert(ignoreList, p.Character) end
-    end
-    raycastParams.FilterDescendantsInstances = ignoreList
-    raycastParams.FilterType = Enum.RaycastFilterType.Exclude
-    local result = workspace:Raycast(origin, direction, raycastParams)
-    return result == nil
-end
-
--- ===========================
--- LOOP PRINCIPAL
--- ===========================
-RunService.Heartbeat:Connect(function()
-    local rainbowColor = GetRainbowColor()
-    for _, p in pairs(Players:GetPlayers()) do
-        if p ~= LocalPlayer and p.Character and p.Character:FindFirstChild("HumanoidRootPart") then
-            local root = p.Character.HumanoidRootPart
-            local hum = p.Character:FindFirstChild("Humanoid")
-            if hum and hum.Health > 0 then
-                local isEnemy = IsEnemy(p)
-                local visible = IsVisible(root)
-                
-                if getgenv().HBE_Enabled and isEnemy and visible then
-                    local size = getgenv().HitboxSize
-                    root.Size = Vector3.new(size, size, size)
-                    root.Transparency = 1
-                    root.CanCollide = false
-                else
-                    root.Size = Vector3.new(2, 2, 2)
-                    root.Transparency = 1
-                    root.CanCollide = true
-                end
-
-                local hl = p.Character:FindFirstChild("JUMENTAO_HL")
-                if getgenv().ESP_Enabled then
-                    if not hl then 
-                        hl = Instance.new("Highlight", p.Character)
-                        hl.Name = "JUMENTAO_HL" 
-                    end
-                    if not isEnemy then
-                        hl.FillColor = Color3.new(0, 0.5, 1)
-                        hl.FillTransparency = 0.5
-                        hl.OutlineColor = Color3.new(0, 0.5, 1)
-                        hl.OutlineTransparency = 0
-                    else
-                        hl.FillColor = rainbowColor
-                        hl.FillTransparency = 0.5
-                        hl.OutlineColor = rainbowColor
-                        hl.OutlineTransparency = 0
-                    end
-                    hl.Enabled = true
-                elseif hl then 
-                    hl:Destroy() 
-                end
-            end
-        end
-    end
-end)
-
--- ===========================
--- INTERFACE COM TÍTULO
--- ===========================
-local ScreenGui = Instance.new("ScreenGui", LocalPlayer.PlayerGui)
-ScreenGui.Name = "Jumentao_Final_UI"
-ScreenGui.ResetOnSpawn = false
-
-local Main = Instance.new("Frame", ScreenGui)
-Main.Size = UDim2.new(0, 300, 0, 280) -- Aumentado um pouco para o título
-Main.Position = UDim2.new(0.5, -150, 0.5, -140)
-Main.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
-Main.Visible = false
-Instance.new("UICorner", Main)
-Instance.new("UIStroke", Main).Color = PinkColor
-
--- ADICIONANDO O TÍTULO DO PAINEL
-local Title = Instance.new("TextLabel", Main)
-Title.Size = UDim2.new(1, 0, 0, 40)
-Title.Position = UDim2.new(0, 0, 0, 5)
-Title.BackgroundTransparency = 1
-Title.Text = "HRZ VIP"
-Title.TextColor3 = PinkColor
-Title.TextSize = 18
-Title.Font = Enum.Font.GothamBold
-
-local function AddBtn(text, y, var, callback)
-    local b = Instance.new("TextButton", Main)
-    b.Size = UDim2.new(0.8, 0, 0, 35)
-    b.Position = UDim2.new(0.1, 0, 0, y)
-    b.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
-    b.Text = text .. (getgenv()[var] and ": ON" or ": OFF")
-    b.BackgroundColor3 = getgenv()[var] and PinkColor or Color3.fromRGB(30, 30, 30)
-    b.TextColor3 = Color3.new(0, 0, 0)
-    Instance.new("UICorner", b)
-    b.MouseButton1Click:Connect(function()
-        getgenv()[var] = not getgenv()[var]
-        b.Text = text .. (getgenv()[var] and ": ON" or ": OFF")
-        b.BackgroundColor3 = getgenv()[var] and PinkColor or Color3.fromRGB(30, 30, 30)
-        if callback then callback() end
-    end)
-end
-
--- Ajustado o Y dos botões para não sobrepor o título
-AddBtn("HITBOX 🎯", 60, "HBE_Enabled")
-AddBtn("ESP 🌈", 110, "ESP_Enabled")
-AddBtn("WALLCHECK 🧱", 160, "WallCheck")
-AddBtn("INGNORAR ALIADOS 👥", 210, "TeamCheck", function() 
-    AutoDetectAllies() 
-end)
-
-local TBtn = Instance.new("TextButton", ScreenGui)
-TBtn.Size = UDim2.new(0, 50, 0, 50)
-TBtn.Position = UDim2.new(0.9, 0, 0.1, 0)
-TBtn.BackgroundColor3 = PinkColor
-TBtn.Text = "X"
-Instance.new("UICorner", TBtn).CornerRadius = UDim.new(1, 0)
-TBtn.MouseButton1Click:Connect(function() Main.Visible = not Main.Visible end)
-
-task.spawn(AutoDetectAllies)
-Notify("HRZ", "PAINEL CARREGADO COM SUCESSO!", 4)
